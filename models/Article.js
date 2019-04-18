@@ -16,7 +16,7 @@ var ArticleSchema = new Schema({
     type: String,
     required: true
   },
-  // `description` is required and of type String
+  // `description` is required and of type String display the short snippet related to the article 
   description: {
     type: String,
     required: true
@@ -26,14 +26,14 @@ var ArticleSchema = new Schema({
     type: Boolean, 
     required: true, 
     default : false 
-  }
-  // `note` is an object that stores a Note id
-  // The ref property links the ObjectId to the Note model
-  // This allows us to populate the Article with an associated Note
-  note: {
+  },
+  // `comment` is an object that stores an array of commnet's [ Comment id's]
+  // The ref property links the ObjectId to the Comment model
+  // This allows us to populate the Article with an associated comment(s)
+  comments: [{
     type: Schema.Types.ObjectId,
-    ref: "Note"
-  }
+    ref: "Comment"
+  }]
 });
 
 // This creates our model from the above schema, using mongoose's model method
