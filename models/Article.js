@@ -26,7 +26,7 @@ var ArticleSchema = new Schema({
     required: true
   },
   //This column will hold the flag value in case an article is saved.  
-  saved: {
+  isSaved: {
     type: Boolean, 
     required: true, 
     default : false 
