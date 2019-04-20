@@ -38,8 +38,11 @@ mongoose.connect(MONGODB_URI);
 // A GET route for scraping the invision blog
 app.get("/scrape", function(req, res) {
 
+  console.log("Inside scrape route");
+
+
     // First, we grab the body of the html with axios
-  axios.get("http://www.echojs.com/").then(function(response) {
+  axios.get("https://www.nytimes.com/section/travel").then(function(response) {
     // Then, we load that into cheerio and save it to $ for a shorthand selector
     var $ = cheerio.load(response.data);
   
@@ -47,21 +50,8 @@ app.get("/scrape", function(req, res) {
   $("section stream-panel").each(function(i, element) {
     // Save an empty result object
     var result = {};
-
-  //       var title = $(element).children().text();
-  //        var link = $(element).attr("href");
-  //       var snippet = $(element).siblings('p').text().trim();
-  //       var articleCreated = moment().format("YYYY MM DD hh:mm:ss");
-  
-  //       var result = {
-  //         title: title,
-  //         link: link,
-  //         snippet: snippet,
-  //         articleCreated: articleCreated,
-  //         isSaved: false
-  //       }
-        
-  //       console.log(result);
+    console.log(element.text());
+        console.log(result);
         
   //       db.Article.findOne({title:title}).then(function(data) {
           
