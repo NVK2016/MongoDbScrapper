@@ -26,8 +26,8 @@ $.getJSON("/saved", function(data) {
     newArticleDiv.append("<p data-id='" + data[i]._id + "'>" + "<h2 class='card-header bg-primary'>"+data[i].title+"</h2>" 
     + "<br /> <a target='_blank' href='" + data[i].link + "'> "+data[i].link +" </a><br />" +
      "<p> <img class='articleImage' src=" + data[i].image+ " />" 
-     + "<button class='btn btn-danger delete-saved-article mr-5' data-id="+data[i]._id+">Delete from saved</button>"+
-     "<button class='btn btn-info text-white note-button' data-id="+data[i]._id+">Note</button> </p>"
+     + "<button class='btn btn-danger delete-article mr-5' data-id="+data[i]._id+">Delete from saved</button> "
+     + "<button class='btn btn-info text-white comment-button' data-id="+data[i]._id+">Comment</button> </p>";
     //  newArticleDiv.append($("<a class='btn btn-success save' id='savearticle'>Save Article</a>"));
 
     $("#articles").append(newArticleDiv); 
