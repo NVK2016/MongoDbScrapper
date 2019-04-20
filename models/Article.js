@@ -20,8 +20,8 @@ var ArticleSchema = new Schema({
     type: String,
     required: true
   },
-  // `description` is required and of type String display the short snippet related to the article 
-  description: {
+  // `image` is required and of type String display the short snippet related to the article 
+  image: {
     type: String,
     required: true
   },
