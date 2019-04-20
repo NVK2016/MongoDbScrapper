@@ -138,6 +138,15 @@ app.post("/articles/:id", function(req, res) {
     });
 });
 
+console.log("1");
+
+app.get("/saved", function(req, res){
+  console.log("2"); 
+  db.Article.find({isSaved:true}).then(function(savedArticles){
+      res.sendFile("saved.html", savedArticles)
+  })
+})
+
   
 // Start the server
 app.listen(PORT, function() {
