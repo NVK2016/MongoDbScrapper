@@ -2,7 +2,7 @@
 create a web app that lets users view and leave comments on the latest news. But you're not going to actually write any articles; instead, you'll flex your Mongoose and Cheerio muscles to scrape news from another site.
 
 ## Demo Link 
-The web app is deployed on heroku and can be accessed by clicking Here. 
+The web app is deployed on heroku and can be accessed by clicking <a href="https://mongoscrappernews.herokuapp.com/">Here</a>
 
 
 ## Getting Started
@@ -20,6 +20,11 @@ to install all the required packages to scarpe the site.
 
 
 ## Screenshots 
+
+##BUGS 
+
+the site isn't working as expected. 
+working on it 
 
 ### Owner 
 
