@@ -147,6 +147,19 @@ app.get("/saved", function(req, res){
   })
 })
 
+//clear all articles in db
+app.delete("/cleararticles", function(req, res){
+  db.Article.remove({})
+  .then(function(result){
+    console.log("Removed all records fro m the database" ); 
+    res.redirect("/"); 
+  })
+  .catch(function(err){
+      console.log(err)
+  }
+  )
+});
+
   
 // Start the server
 app.listen(PORT, function() {
