@@ -9,5 +9,15 @@ The web app is deployed on heroku and can be accessed by clicking Here.
 
 These instructions will get you a copy of the project up and running on your local machine for development. I will assume that you already have Node.js and MongoDB installed locally. See deployment for notes on how to deploy the project on a live system.
 
+1. clone the repository on your local machine. 
+2. Then navigate to the cloned folder within it type 
+
+    npm install 
+
+to install all the required packages to scarpe the site. 
+
+3. the site can be access using the above heroku link. 
+
+
 ## Screenshots 
 

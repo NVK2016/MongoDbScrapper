@@ -37,41 +37,45 @@ mongoose.connect(MONGODB_URI);
 
 // A GET route for scraping the invision blog
 app.get("/scrape", function(req, res) {
+
+    // First, we grab the body of the html with axios
+  axios.get("http://www.echojs.com/").then(function(response) {
+    // Then, we load that into cheerio and save it to $ for a shorthand selector
+    var $ = cheerio.load(response.data);
   
-    request("https://www.invisionapp.com/blog", function(error, response, html) {
-      
-      var $ = cheerio.load(html);
+  // Now, we grab every h2 within an article tag, and do the following:
+  $("section stream-panel").each(function(i, element) {
+    // Save an empty result object
+    var result = {};
+
+  //       var title = $(element).children().text();
+  //        var link = $(element).attr("href");
+  //       var snippet = $(element).siblings('p').text().trim();
+  //       var articleCreated = moment().format("YYYY MM DD hh:mm:ss");
   
-      $(".title-link").each(function(i, element) {
+  //       var result = {
+  //         title: title,
+  //         link: link,
+  //         snippet: snippet,
+  //         articleCreated: articleCreated,
+  //         isSaved: false
+  //       }
         
-        var title = $(element).children().text();
-        var link = $(element).attr("href");
-        var snippet = $(element).siblings('p').text().trim();
-        var articleCreated = moment().format("YYYY MM DD hh:mm:ss");
-  
-        var result = {
-          title: title,
-          link: link,
-          snippet: snippet,
-          articleCreated: articleCreated,
-          isSaved: false
-        }
+  //       console.log(result);
         
-        console.log(result);
-        
-        db.Article.findOne({title:title}).then(function(data) {
+  //       db.Article.findOne({title:title}).then(function(data) {
           
-          console.log(data);
+  //         console.log(data);
+  // ``
+  //         if(data === null) {
   
-          if(data === null) {
-  
-            db.Article.create(result).then(function(dbArticle) {
-              res.json(dbArticle);
-            });
-          }
-        }).catch(function(err) {
-            res.json(err);
-        });
+  //           db.Article.create(result).then(function(dbArticle) {
+  //             res.json(dbArticle);
+  //           });
+  //         }
+  //       }).catch(function(err) {
+  //           res.json(err);
+  //       });
   
       });
   
