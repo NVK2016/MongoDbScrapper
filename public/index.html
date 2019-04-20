@@ -26,13 +26,13 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/saved">Saved Articles</a>
+        <a class="nav-link" href="/saved.html">Saved Shows</a>
       </li>
       <li class="nav-item">
-        <a class="btn btn-warning scrape-new" href="/scrape">SCRAPE NEW ARTICLES!</a>
+        <a class="btn btn-success scrape-new mr-5" href="/scrape">SCRAPE NEW SHOWS!</a>
       </li>
       <li class="nav-item">
-        <a class="btn btn-warning clear">CLEAR ARTICLES!</a>
+        <a class="btn btn-danger clear text-light">CLEAR SHOWS!</a>
       </li>
     </ul>
   </div>
@@ -44,13 +44,36 @@
   <div class="background-image">
   </div>
     <div id="wrapper">
-      <h1>Note Scraper</h1>
-      <h2><i>If you can do this...the homework should be no problem.</i></h2>
-      <div id="articles"></div>
+      <h1>Mongo Scraper</h1>
+      <div id="articles">
+        <div class="row">
+        
+          <div class="col-1">
+          </div>
+        
+          <div class="col-10 articleColumn">
+          </div>
+        </div>
+      </div>
       <div id="comments"></div>
     </div>
- 
+ <!-- Modal -->
+ <div class="modal fade" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
 
+      <div class="modal-header">
+        <div class="modal-title"></div>
+      </div>
+      <div class="modal-body">
+        <p id="note">Notes</p>
+        <div class="input"></div>
+      </div>
+    
+    </div>
+  </div>
+</div>
+<!-- End of Modal -->
 <footer class="footer">
   <div class="container">
     <p>New York Times Mongo Scraper</p>

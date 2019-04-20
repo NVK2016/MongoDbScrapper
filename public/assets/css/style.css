@@ -1,0 +1,9 @@
+.articleImage {
+    width: 15%; 
+    margin-left: 25; 
+    margin-right: 25%;  
+}
+.save{
+    width: 25; 
+    float: left;
+}
