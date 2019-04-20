@@ -25,6 +25,10 @@ var ArticleSchema = new Schema({
     type: String,
     required: true
   },
+  articleCreated: {
+    type: Date, 
+    default : Date.now
+  },
   //This column will hold the flag value in case an article is saved.  
   isSaved: {
     type: Boolean, 
