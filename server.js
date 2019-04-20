@@ -37,6 +37,11 @@ mongoose.connect(MONGODB_URI);
 
 // Routes
 
+app.get('/',function(req,res) {
+  res.sendFile('index.html');
+});
+
+
 // A GET route for scraping the invision blog
 app.get("/scrape", function(req, res) {
 
@@ -99,6 +104,19 @@ app.get("/scrape", function(req, res) {
       });
   });
 
+  // Updated the article that is saved 
+app.put("/savearticle/:id", function(req, res){
+  console.log(
+    "Save article", req.params.id
+  );
+  db.Article.findOneAndUpdate({_id: req.params.id}, {isSaved: true}, {new:true})
+  .then(function(response){
+          console.log(response);
+      })
+  .catch(function(err){
+      console.log(err)
+  })
+})
   
 // Start the server
 app.listen(PORT, function() {

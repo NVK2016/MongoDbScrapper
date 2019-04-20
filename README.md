@@ -16,8 +16,11 @@ These instructions will get you a copy of the project up and running on your loc
 
 to install all the required packages to scarpe the site. 
 
-3. the site can be access using the above heroku link. 
+3. the site can be access using the above heroku link. need to publish it yet. 
 
 
 ## Screenshots 
 
+### Owner 
+
+Namita Shenai - 
