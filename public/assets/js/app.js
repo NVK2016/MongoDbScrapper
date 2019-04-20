@@ -3,9 +3,10 @@ $.getJSON("/articles", function(data) {
     // For each one
     for (var i = 0; i < data.length; i++) {
       // Display the apropos information on the page
+      console.log(data[i]._id, data[i].title)
       //Create a card 
       var newArticleDiv = $("<div class='card' >"); 
-      newArticleDiv.append("<p id='articleNo' data-id='" + data[i]._id + "'>" + "<h2 class='card-header bg-primary'>"+data[i].title+"</h2>" 
+      newArticleDiv.append("<p data-id='" + data[i]._id + "'>" + "<h2 class='card-header bg-primary'>"+data[i].title+"</h2>" 
       + "<br /> <a target='_blank' href='" + data[i].link + "'> "+data[i].link +" </a><br />" +
        "<p> <img class='articleImage' src=" + data[i].image+ " /> <a class='btn btn-success save' id='savearticle'>Save Article</a> </p> </p>");
       //  newArticleDiv.append($("<a class='btn btn-success save' id='savearticle'>Save Article</a>"));
@@ -17,13 +18,13 @@ $.getJSON("/articles", function(data) {
   // When you click the savearticle button
   $(document).on("click", "#savearticle", function() {
     // Grab the id associated with the article from the submit button
-    var thisId = $(this).attr("data_id");
-    alert(thisId); 
+    var articleID = $(this).data("objectID");
+    alert(articleID); 
 
     // Run a POST request to change the note, using what's entered in the inputs
     $.ajax({
       method: "PUT",
-      url: "/savearticle/" + thisId
+      url: "/savearticle/" + articleID
     })
       // With that done
       .then(function(data) {

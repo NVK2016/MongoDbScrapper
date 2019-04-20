@@ -41,6 +41,10 @@ app.get('/',function(req,res) {
   res.sendFile('index.html');
 });
 
+app.get('/cleararticles',function(req,res) {
+  res.sendFile('index.html');
+});
+
 
 // A GET route for scraping the invision blog
 app.get("/scrape", function(req, res) {
@@ -140,11 +144,13 @@ app.post("/articles/:id", function(req, res) {
 
 console.log("1");
 
-app.get("/saved", function(req, res){
-  console.log("2"); 
-  db.Article.find({isSaved:true}).then(function(savedArticles){
-      res.sendFile("saved.html", savedArticles)
-  })
+app.get("/saved", function (req, res) {
+  console.log("2");
+  db.Article.find(
+    { isSaved: true }
+  ).then(function (savedArticles) {
+    res.json(savedArticles);
+})
 })
 
 //clear all articles in db
@@ -152,7 +158,7 @@ app.delete("/cleararticles", function(req, res){
   db.Article.remove({})
   .then(function(result){
     console.log("Removed all records fro m the database" ); 
-    res.redirect("/"); 
+    res.sendFile("index.html"); 
   })
   .catch(function(err){
       console.log(err)
