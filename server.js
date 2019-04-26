@@ -4,6 +4,7 @@
 var express = require("express");
 var logger = require("morgan");
 var mongoose = require("mongoose");
+var path = require("path"); 
 //Today date 
 var moment = require("moment");
 
@@ -38,11 +39,16 @@ mongoose.connect(MONGODB_URI);
 // Routes
 
 app.get('/',function(req,res) {
-  res.sendFile('index.html');
+  res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 app.get('/cleararticles',function(req,res) {
-  res.sendFile('index.html');
+  res.sendFile(path.join(__dirname, 'index.html'));
+});
+
+//Display Saved Articles 
+app.get('/savedarticles',function(req,res) {
+  res.sendFile(path.join(__dirname, 'public/saved.html'));
 });
 
 
@@ -78,11 +84,11 @@ app.get("/scrape", function(req, res) {
       db.Article.create(result)
         .then(function(dbArticle) {
           // View the added result in the console
-          console.log(dbArticle);
+          res.json(dbArticle);
         })
         .catch(function(err) {
           // If an error occurred, log it
-          console.log(err);
+          res.json(err);
         });
       
     });
@@ -115,10 +121,10 @@ app.put("/savearticle/:id", function(req, res){
   );
   db.Article.findOneAndUpdate({_id: req.params.id}, {isSaved: true}, {new:true})
   .then(function(response){
-          console.log(response);
+          res.json(response);
       })
   .catch(function(err){
-      console.log(err)
+      res.json(err)
   })
 });
 
@@ -150,7 +156,7 @@ app.get("/saved", function (req, res) {
     { isSaved: true }
   ).then(function (savedArticles) {
     res.json(savedArticles);
-})
+  })
 })
 
 //clear all articles in db
