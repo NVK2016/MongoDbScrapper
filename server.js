@@ -119,13 +119,27 @@ app.put("/savearticle/:id", function(req, res){
     "Save article", req.params.id
   );
   db.Article.findOneAndUpdate({_id: req.params.id}, {isSaved: true}, {new:true})
-  .then(function(response){
-          res.json(response);
+  .then(function(dbArticle){
+          res.json(dbArticle);
       })
   .catch(function(err){
       res.json(err)
   })
 });
+
+  // delete the saved article 
+  app.post("/deletearticle/:id", function(req, res){
+    console.log(
+      "Delete Saved article", req.params.id
+    );
+    db.Article.deleteOne({_id: req.params.id})
+    .then(function(dbArticle){
+            res.json(dbArticle);
+        })
+    .catch(function(err){
+        res.json(err)
+    })
+  });
 
 // Route for saving/updating an Article's associated Note
 app.post("/comment-article/:id", function(req, res) {
