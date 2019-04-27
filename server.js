@@ -57,7 +57,6 @@ app.get("/scrape", function(req, res) {
 
   console.log("Inside scrape route");
 
-
     // First, we grab the body of the html with axios
   axios.get("https://www.foxnews.com/shows").then(function(response) {
     // Then, we load that into cheerio and save it to $ for a shorthand selector
@@ -129,7 +128,7 @@ app.put("/savearticle/:id", function(req, res){
 });
 
 // Route for saving/updating an Article's associated Note
-app.post("/articles/:id", function(req, res) {
+app.post("/comment-article/:id", function(req, res) {
   // Create a new note and pass the req.body to the entry
   db.Comment.create(req.body)
     .then(function(dbComment) {
@@ -150,6 +149,7 @@ app.post("/articles/:id", function(req, res) {
 
 console.log("1");
 
+//Loads all the Saved atricles on the site 
 app.get("/saved", function (req, res) {
   console.log("2");
   db.Article.find(
