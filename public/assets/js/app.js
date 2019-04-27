@@ -38,5 +38,18 @@ $.getJSON("/articles", function(data) {
       });
   });
   
+  //Delete all Unsaved articles 
+  $("#clearShows").on("click", function(event) {
+    // prevent the page to refresh
+    event.preventDefault();
+    alert("claear all shows"); 
+    // post request to delete the articles that haven't been saved
+    $.ajax("/cleararticles", {
+        method: "POST"
+    }).then(function() {
+        // reload the page
+        location.reload();
+    });
+})
 
  
