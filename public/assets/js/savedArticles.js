@@ -9,8 +9,8 @@ $.getJSON("/saved", function(data) {
       newArticleDiv.append("<p>" + "<h2 class='card-header bg-primary'>"+data[i].title+"</h2>" 
       + "<br />  Link Below to the TV show: <a target='_blank' href='" + data[i].link + "'> "+data[i].link +" </a><br />" +
        "<p> <img class='articleImage' src=" + data[i].image+ " /> <br/>"+
-       "<a data-id='" + data[i]._id + "' class='btn btn-warning save' id='deletearticle'>Delete Article</a>"
-       +"<a data-id='" + data[i]._id + "' class='btn btn-primary save' id='comment'>Comment </a> </p>");
+       "<a data-id='" + data[i]._id + "' class='btn btn-warning' id='deletearticle'>Delete Article</a>"
+       +"<a data-id='" + data[i]._id + "' class='btn btn-primary' id='savecomment'>Comment </a> </p>");
 
 
       $("#articles").append(newArticleDiv); 
@@ -18,10 +18,10 @@ $.getJSON("/saved", function(data) {
   });
 
   // event listener for "deletearticle" button to delete the saved articles
-$(document).on("click", ".deletearticle", function(event) {
+$(document).on("click", "#deletearticle", function(event) {
     // Grab the id associated with the article from the submit button
     var articleID = $(this).data("id");
-    alert(articleID); 
+    alert("Delete Article" , articleID); 
 
     // post request to delete the saved article whose "delete" button has been clicked
     $.ajax("/deletearticle/" + articleID, {
@@ -33,15 +33,16 @@ $(document).on("click", ".deletearticle", function(event) {
 });
 
 
-   // When you click the savenote button
-$(document).on("click", "#savenote", function() {
+   // When you click the savecomment button
+$(document).on("click", "#savecomment", function() {
     // Grab the id associated with the article from the submit button
-    var thisId = $(this).attr("data-id");
+    var articleID = $(this).data("id");
+    alert("Save Note for ", articleID);
   
     // Run a POST request to change the note, using what's entered in the inputs
     $.ajax({
       method: "POST",
-      url: "/articles/" + thisId,
+      url: "/comment-article/" + thisId,
       data: {
         // Value taken from title input
         title: $("#titleinput").val(),
