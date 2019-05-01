@@ -148,7 +148,7 @@ app.put("/savearticle/:id", function(req, res){
   });
 
 
-// To popuplate the Article's associated Note
+// To popuplate the comment's associated Article
 app.get("/comment-article/:id", function(req, res) {
    // find one - the saved article whose "note" button has been clicked
    db.Article.findOne({ _id: req.params.id })
