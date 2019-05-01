@@ -76,7 +76,7 @@ $(document).on("click", "#savecomment", function() {
     // Run a POST request to change the note, using what's entered in the inputs
     $.ajax({
       method: "POST",
-      url: "/comment-article/" + thisId,
+      url: "/comment-article/" + articleID,
       data: {
         // Value taken from title input
         title: $("#titleinput").val(),
