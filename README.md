@@ -31,6 +31,7 @@ to install all the required packages to scarpe the site.
 
 ## Techologies Used: 
 <hr /> 
+
 1. **M**ongoDB + Mongoose
 2. **N**ode JS
 3. **J**avascript
